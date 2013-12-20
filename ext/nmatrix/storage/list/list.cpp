@@ -39,6 +39,7 @@
  * Project Includes
  */
 
+#include "../../ruby_nmatrix.h"
 #include "../../types.h"
 
 #include "../../data/data.h"

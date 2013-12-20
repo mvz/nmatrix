@@ -34,6 +34,7 @@
 /*
  * Project Includes
  */
+#include "../../ruby_nmatrix.h"
 #include "../../data/data.h"
 #include "../../math/long_dtype.h"
 #include "../../math/gemm.h"

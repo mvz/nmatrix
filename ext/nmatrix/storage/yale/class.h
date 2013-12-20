@@ -29,6 +29,7 @@
 #ifndef YALE_CLASS_H
 # define YALE_CLASS_H
 
+#include "../../ruby_nmatrix.h"
 #include "../dense/dense.h"
 #include "math/transpose.h"
 #include "yale.h"

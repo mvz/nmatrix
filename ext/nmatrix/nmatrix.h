@@ -285,18 +285,6 @@ NM_DEF_STRUCT_PRE(NMATRIX);   // struct NMATRIX {
   NM_DECL_STRUCT(STORAGE*, storage);  // STORAGE* storage;  // Pointer to storage struct.
 NM_DEF_STRUCT_POST(NMATRIX);  // };
 
-/* Structs for dealing with VALUEs in use so that they don't get GC'd */
-
-NM_DEF_STRUCT_PRE(NM_GC_LL_NODE);       // struct NM_GC_LL_NODE {
-  VALUE* val;                           //   VALUE* val;
-  size_t n;                             //   size_t n;
-  NM_DECL_STRUCT(NM_GC_LL_NODE*, next); //   NM_GC_LL_NODE* next;
-NM_DEF_STRUCT_POST(NM_GC_LL_NODE);      // };
-
-NM_DEF_STRUCT_PRE(NM_GC_HOLDER);        // struct NM_GC_HOLDER {
-  NM_DECL_STRUCT(NM_GC_LL_NODE*, start); //  NM_GC_LL_NODE* start;
-NM_DEF_STRUCT_POST(NM_GC_HOLDER);       // };
-
 #define NM_MAX_RANK 15
 
 #define UnwrapNMatrix(obj,var)  Data_Get_Struct(obj, NMATRIX, var)
@@ -380,23 +368,6 @@ extern "C" {
 
   NM_DECL_ENUM(dtype_t, nm_dtype_guess(VALUE));   // (This is a function)
   NM_DECL_ENUM(dtype_t, nm_dtype_min(VALUE));
-
-  // Non-API functions needed by other cpp files.
-  _NMATRIX* nm_create(NM_DECL_ENUM(stype_t, stype), _STORAGE* storage);
-  _NMATRIX* nm_cast_with_ctype_args(_NMATRIX* self, NM_DECL_ENUM(stype_t, new_stype), NM_DECL_ENUM(dtype_t, new_dtype), void* init_ptr);
-  VALUE    nm_cast(VALUE self, VALUE new_stype_symbol, VALUE new_dtype_symbol, VALUE init);
-  void     nm_mark(_NMATRIX* mat);
-  void     nm_delete(_NMATRIX* mat);
-  void     nm_delete_ref(_NMATRIX* mat);
-  void     nm_register_values(VALUE* vals, size_t n);
-  void     nm_register_value(VALUE* val);
-  void     nm_unregister_value(VALUE* val);
-  void     nm_unregister_values(VALUE* vals, size_t n);
-  void     nm_register_storage(NM_DECL_ENUM(stype_t, stype), const _STORAGE* storage);
-  void     nm_unregister_storage(NM_DECL_ENUM(stype_t, stype), const _STORAGE* storage);
-  void     nm_register_nmatrix(_NMATRIX* nmatrix);
-  void     nm_unregister_nmatrix(_NMATRIX* nmatrix);
-  void     nm_completely_unregister_value(VALUE* val);
 
 #ifdef __cplusplus
 }

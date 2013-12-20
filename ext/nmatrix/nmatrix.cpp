@@ -280,5 +280,6 @@ namespace nm {
 } // end of namespace nm
 
 extern "C" {
+  #include "ruby_nmatrix.h"
   #include "ruby_nmatrix.c"
 } // end of extern "C"

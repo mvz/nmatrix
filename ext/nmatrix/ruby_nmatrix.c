@@ -503,6 +503,17 @@ void nm_delete_ref(NMATRIX* mat) {
   NM_FREE(mat);
 }
 
+/* Structs for dealing with VALUEs in use so that they don't get GC'd */
+
+NM_DEF_STRUCT_PRE(NM_GC_LL_NODE);       // struct NM_GC_LL_NODE {
+  VALUE* val;                           //   VALUE* val;
+  size_t n;                             //   size_t n;
+  NM_DECL_STRUCT(NM_GC_LL_NODE*, next); //   NM_GC_LL_NODE* next;
+NM_DEF_STRUCT_POST(NM_GC_LL_NODE);      // };
+
+NM_DEF_STRUCT_PRE(NM_GC_HOLDER);        // struct NM_GC_HOLDER {
+  NM_DECL_STRUCT(NM_GC_LL_NODE*, start); //  NM_GC_LL_NODE* start;
+NM_DEF_STRUCT_POST(NM_GC_HOLDER);       // };
 
 /**
  * These variables hold a linked list of VALUEs that are registered to be in
