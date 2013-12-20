@@ -152,7 +152,7 @@ else
     $CPP_STANDARD = 'c++11'
   end
   puts "using C++ standard... #{$CPP_STANDARD}"
-  puts "g++ reports version... " + `#{CONFIG['CXX']} --version|head -n 1|cut -f 3 -d " "`
+  puts "g++ reports version... #{version}"
 end
 
 #$libs += " -lprofiler "
