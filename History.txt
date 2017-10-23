@@ -188,7 +188,7 @@
 
   * Fixed Yale sorting-following-multiplication problem
 
-  * NMatrix::read() now raises an exception when asked to read a file 
+  * NMatrix::read() now raises an exception when asked to read a file
     that does not exist
 
 === 0.0.6 / 2013-08-09
@@ -540,7 +540,7 @@
   * Added NMatrix::has_clapack? method to determine whether CLAPACK
     support has been compiled in
 
-  * Improved conformance of specs to RSpec best practices (by 
+  * Improved conformance of specs to RSpec best practices (by
     @duggiefresh)
 
   * Travis CI now updates the IRC channel when a check passes (by
@@ -591,7 +591,7 @@
 
   * Exposed NMatrix::LAPACK::geev for LAPACK's xGEEV
 
-  * Added out-of-place complex conjugate for dense and yale storage 
+  * Added out-of-place complex conjugate for dense and yale storage
     (by @rve)
 
 * 1 bug fixes:
@@ -638,7 +638,7 @@
 
   * Updated to BSD 3-clause license
 
-  * Removed Ruby 1.9.2 support; now requires Ruby 1.9.3 or 
+  * Removed Ruby 1.9.2 support; now requires Ruby 1.9.3 or
     higher (by @v0dro)
 
   * Added Gauss-Jordan elimination for calculation of
@@ -742,16 +742,16 @@
 === 0.2.1 / 2016-01-18
 
 * 3 major enhancements:
-  
+
   * New plugin nmatrix-fftw for wrapping over FFTW (by
      @v0dro)
-  
+
   * Change Ruby Array C pointer references to be compatible
     with Ruby 2.3.0 (by @mrkn)
 
   * NMatrix can now be compiled with clang (by @mrkn)
 
-* 4 minor enhancements: 
+* 4 minor enhancements:
 
   * Improved Travis configs to test on Linux and OSX with
     and without plugins (by @mrkn)
@@ -773,7 +773,7 @@
   * Check if optional permute parameter in NMatrix#transpose
     is an Array to prevent unexpected disappearing-parameter
     behavior (by @firemind)
-    
+
   * Moved rubyobj_from_cval function into `nm` namespace
     from C-linkage to fix a C compile time error (by @mrkn)
 
@@ -789,7 +789,7 @@
   * Added Hilbert and inverse Hilbert matrix functions
     #hilbert and #inv_hilbert (by @arafatk)
 
-  * Added NMatrix.linspace constructor for generating a 
+  * Added NMatrix.linspace constructor for generating a
     vector with linearly spaced elements (by @gau27)
 
   * Added NMatrix.logspace constructor for generating a
