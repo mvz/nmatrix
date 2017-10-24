@@ -28,8 +28,6 @@
 require 'spec_helper'
 
 describe "Slice operation" do
-  include RSpec::Longrun::DSL
-
   [:dense, :list, :yale].each do |stype|
     context "for #{stype}" do
         #GC.start # don't have to do this, but it helps to make sure we've cleaned up our pointers properly.
@@ -363,15 +361,15 @@ describe "Slice operation" do
 
         end
 
-        example 'should be cleaned up by garbage collector without errors'  do
-          step "reference slice" do
+        Steps 'should be cleaned up by garbage collector without errors'  do
+          Given "reference slice" do
             1.times do
               n = stype_matrix[1..2,0..1]
             end
             GC.start
           end
 
-          step "reference slice of casted-copy" do
+          Then "reference slice of casted-copy" do
             expect(stype_matrix).to eq(NMatrix.new([3,3], (0..9).to_a, dtype: :int32).cast(stype, :int32))
             n = nil
             1.times do

@@ -24,7 +24,7 @@
 #
 # Common data and helper functions for testing.
 
-require "rspec/longrun"
+require 'rspec/example_steps'
 #require "narray/narray"
 
 require "./lib/nmatrix"

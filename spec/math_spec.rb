@@ -263,7 +263,7 @@ describe "math" do
           expect(a).to eq(b)
           expect(r).to eq(b)
         rescue NotImplementedError
-          pending "potrf! not implemented without plugins"
+          skip "potrf! not implemented without plugins"
         end
       end
 
@@ -279,7 +279,7 @@ describe "math" do
           expect(a).to eq(b)
           expect(r).to eq(b)
         rescue NotImplementedError
-          pending "potrf! not implemented without plugins"
+          skip "potrf! not implemented without plugins"
         end
       end
 
@@ -294,7 +294,7 @@ describe "math" do
           expect(u).to eq(u_true)
           expect(l).to eq(l_true)
         rescue NotImplementedError
-          pending "potrf! not implemented without plugins"
+          skip "potrf! not implemented without plugins"
         end
       end
     end
@@ -329,7 +329,7 @@ describe "math" do
           expect(r).to be_within(err).of(r_solution)
 
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
 
@@ -363,7 +363,7 @@ describe "math" do
           expect(r).to be_within(err).of(r_solution)
 
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
 
@@ -391,7 +391,7 @@ describe "math" do
           expect(r).to be_within(err).of(r_solution)
 
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
 
@@ -415,7 +415,7 @@ describe "math" do
           expect(a_expected).to be_within(err).of(a)
 
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
 
@@ -443,7 +443,7 @@ describe "math" do
           expect(product[1,1]).to be_within(err).of(1)
 
         rescue NotImplementedError
-          pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+          skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
         end
       end
     end
@@ -461,7 +461,6 @@ describe "math" do
             end
 
       it "should correctly invert a matrix in place (bang)" do
-        pending("not yet implemented for :object dtype") if dtype == :object
         a = NMatrix.new(:dense, 5, [1, 8,-9, 7, 5,
                                     0, 1, 0, 4, 4,
                                     0, 0, 1, 2, 5,
@@ -528,7 +527,7 @@ describe "math" do
           begin
             expect(a.dot(a.pinv)).to be_within(err).of(b)
           rescue NotImplementedError
-            pending "Suppressing a NotImplementedError when the atlas plugin is not available"
+            skip "Suppressing a NotImplementedError when the atlas plugin is not available"
           end
 
         else
@@ -538,7 +537,7 @@ describe "math" do
           begin
             expect(a.dot(a.pinv)).to be_within(err).of(b)
           rescue NotImplementedError
-            pending "Suppressing a NotImplementedError when the atlas plugin is not available"
+            skip "Suppressing a NotImplementedError when the atlas plugin is not available"
           end
         end
       end
@@ -555,7 +554,7 @@ describe "math" do
             expect(a.dot(b.dot(a))).to be_within(err).of(a)
             expect(b.dot(a.dot(b))).to be_within(err).of(b)
           rescue NotImplementedError
-            pending "Suppressing a NotImplementedError when the atlas plugin is not available"
+            skip "Suppressing a NotImplementedError when the atlas plugin is not available"
           end
 
         else
@@ -566,7 +565,7 @@ describe "math" do
             expect(a.dot(b.dot(a))).to be_within(err).of(a)
             expect(b.dot(a.dot(b))).to be_within(err).of(b)
           rescue NotImplementedError
-            pending "Suppressing a NotImplementedError when the atlas plugin is not available"
+            skip "Suppressing a NotImplementedError when the atlas plugin is not available"
           end
         end
       end
@@ -1134,7 +1133,6 @@ describe "math" do
           expect(@c.det).to be_within(@err).of(-18)
         end
         it "computes the exact determinant of 2x2 matrix" do
-          pending("not yet implemented for :object dtype") if dtype == :object
           if dtype == :byte
             expect{@a.det_exact}.to raise_error(DataTypeError)
           else
@@ -1166,7 +1164,6 @@ describe "math" do
           end
 
           it "scales the matrix by a given factor and return the result" do
-            pending("not yet implemented for :object dtype") if dtype == :object
             if integer_dtype? dtype
               expect{@m.scale 2.0}.to raise_error(DataTypeError)
             else
@@ -1178,7 +1175,6 @@ describe "math" do
           end
 
           it "scales the matrix in place by a given factor" do
-            pending("not yet implemented for :object dtype") if dtype == :object
             if dtype == :int8
               expect{@m.scale! 2}.to raise_error(DataTypeError)
             else
@@ -1214,7 +1210,7 @@ describe "math" do
               expect(@n.matrix_norm).to be_within(@matrix_norm_TOLERANCE).of(7.348469228349535)
 
               rescue NotImplementedError
-                pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+                skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
             end
           end
         end
@@ -1239,7 +1235,7 @@ describe "math" do
               #expect(@n.matrix_norm(-2)).to eq(1.8628605857884395e-07)
               expect(@n.matrix_norm(-2)).to be_within(@matrix_norm_TOLERANCE).of(0.0)
               rescue NotImplementedError
-                pending "Suppressing a NotImplementedError when the lapacke plugin is not available"
+                skip "Suppressing a NotImplementedError when the lapacke plugin is not available"
             end
             expect(@n.matrix_norm(-1)).to eq(6)
           end
